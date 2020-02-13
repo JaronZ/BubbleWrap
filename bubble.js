@@ -39,27 +39,13 @@ client.on('message', message => {
         message.channel.send(embedMsg);
     }
     
-    if (message.content.startsWith('bubble send')) {
-        var user = message.mentions.users.first();
-        if (!user){
-            embedMsg
-                .setDescription('Please mention a user! The proper usage is bubble send <mention>')
-                .setColor('#ff0000');
-            
-            return message.channel.send(embedMsg);
-        }
-        if(!user == message.author) {
-            embedMsg
-                .setDescription('You can only send this message to yourself!')
-                .setColor('#ff0000');
-            message.channel.send(embedMsg);
-        }
-        return user.send(msg).then(() => {
+    if (message.content == 'bubble send') {
+        return message.author.send(msg).then(() => {
             embedMsg.setDescription('message sent');
             message.channel.send(embedMsg);
         }).catch((err) => {
             embedMsg
-                .setDescription('could not send message to ' + user)
+                .setDescription('could not send message. are your DM\'s blocked?')
                 .setColor('#ff0000');
             message.channel.send(embedMsg);
         });
