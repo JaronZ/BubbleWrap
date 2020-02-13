@@ -48,6 +48,12 @@ client.on('message', message => {
             
             return message.channel.send(embedMsg);
         }
+        if(!user == message.author) {
+            embedMsg
+                .setDescription('You can only send this message to yourself!')
+                .setColor('#ff0000');
+            message.channel.send(embedMsg);
+        }
         return user.send(msg).then(() => {
             embedMsg.setDescription('message sent');
             message.channel.send(embedMsg);
