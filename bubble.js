@@ -1,4 +1,4 @@
-const { Client } = require('discord.js');
+const { Client, RichEmbed } = require('discord.js');
 const client = new Client();
 const { token } = require('./config.json');
 var messageAmount = 0;
@@ -20,6 +20,20 @@ process.on('unhandledRejection', error => {
 
 client.on('message', message => {
     if (message.author.bot) return;
+
+    if (message.content == 'bubble goal') {
+        const embedMsg = new RichEmbed()
+            .setColor('#0000ff')
+            .setAuthor(message.author.username, message.author.displayAvatarURL)
+            .setThumbnail(message.author.displayAvatarURL)
+            .setTimestamp()
+            .setFooter(client.user.username, client.user.displayAvatarURL)
+            .addField('Message Goal', goal, true)
+            .addField('Sent Messages', messageAmount, true);
+
+        message.channel.send(embedMsg);
+    }
+
     messageAmount++;
     console.log("message amount: " + messageAmount);
     console.log("message goal: " + goal);
