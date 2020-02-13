@@ -2,7 +2,7 @@ const { Client, RichEmbed } = require('discord.js');
 const client = new Client();
 const { token } = require('./config.json');
 var messageAmount = 0;
-var goal = 12;
+var goal = 200;
 
 client.once('ready', () => {
     console.log('bot is ready!');
@@ -34,6 +34,10 @@ client.on('message', message => {
             .addField('Sent Messages', messageAmount, true);
 
         message.channel.send(embedMsg);
+    }
+    
+    if (message.content.startsWith('bubble send') {
+            
     }
 
     console.log("message amount: " + messageAmount);
