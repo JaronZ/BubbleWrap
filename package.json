@@ -1,20 +1,19 @@
 {
-  "name": "BubbleWrap",
+  "name": "bubblewrap",
   "version": "1.0.0",
-  "description": "",
+  "description": "sends bubble wrap after some messages",
   "main": "bubble.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": { },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jaronetje/BubbleWrap.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Jaron Zijlstra",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jaronetje/BubbleWrap/issues"
   },
-  "homepage": "https://github.com/jaronetje/BubbleWrap#readme"
+  "homepage": "https://github.com/jaronetje/BubbleWrap#readme",
+  "dependencies": {}
 }
