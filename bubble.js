@@ -21,6 +21,8 @@ process.on('unhandledRejection', error => {
 client.on('message', message => {
     if (message.author.bot) return;
 
+    messageAmount++;
+    
     if (message.content == 'bubble goal') {
         const embedMsg = new RichEmbed()
             .setColor('#0000ff')
@@ -34,7 +36,6 @@ client.on('message', message => {
         message.channel.send(embedMsg);
     }
 
-    messageAmount++;
     console.log("message amount: " + messageAmount);
     console.log("message goal: " + goal);
     if (messageAmount == goal) {
