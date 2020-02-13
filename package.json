@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "sends bubble wrap after some messages",
   "main": "bubble.js",
-  "scripts": {},
+  "scripts": {
+    "start": "node bubble.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jaronetje/BubbleWrap.git"
