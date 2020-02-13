@@ -36,7 +36,7 @@ client.on('message', message => {
         message.channel.send(embedMsg);
     }
     
-    if (message.content.startsWith('bubble send') {
+    if (message.content.startsWith('bubble send')) {
             
     }
 
