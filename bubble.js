@@ -7,6 +7,7 @@ var msg = "||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop
 
 client.once('ready', () => {
     console.log('bot is ready!');
+    client.user.setActivity("bubble send", { type: "PLAYING" });
 });
 
 client.login(token);
