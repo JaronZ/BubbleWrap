@@ -42,7 +42,7 @@ client.on('message', message => {
     
     if (message.content.startsWith('bubble send')) {
         var sendAmount = message.content.match(/send/g).length;
-        start: for(var i = 0; i < sendAmount; i++){
+        for(var i = 0; i < sendAmount; i++){
             message.author.send(msg).then(() => {
                 embedMsg.setDescription('message sent');
                 message.channel.send(embedMsg);
@@ -51,7 +51,6 @@ client.on('message', message => {
                     .setDescription('could not send message. are your DM\'s blocked?')
                     .setColor('#ff0000');
                 message.channel.send(embedMsg);
-                break start;
             });
         }
         return;
