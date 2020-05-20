@@ -52,6 +52,9 @@ client.on('message', message => {
                     .setColor('#ff0000');
                 message.channel.send(embedMsg);
             });
+            if (client.user.lastMessage.embeds[0].description === 'could not send message. are your DM\'s blocked?'){
+                break;
+            }
         }
         return;
     }
