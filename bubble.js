@@ -3,7 +3,7 @@ const client = new Client();
 const { token } = require('./config.json');
 var messageAmount = 0;
 var goal = 200;
-var msg = "||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop|| ||pop||";
+var msg = "||pop||".repeat(40);
 
 client.once('ready', () => {
     console.log('bot is ready!');
@@ -42,15 +42,19 @@ client.on('message', message => {
     
     if (message.content.startsWith('bubble send')) {
         var sendAmount = message.content.match(/send/g).length;
-        return message.author.send(msg.repeat(sendAmount)).then(() => {
-            embedMsg.setDescription('message sent');
-            message.channel.send(embedMsg);
-        }).catch((err) => {
-            embedMsg
-                .setDescription('could not send message. are your DM\'s blocked?')
-                .setColor('#ff0000');
-            message.channel.send(embedMsg);
-        });
+        for(var i = 0; i < sendAmount; i++){
+            message.author.send(msg).then(() => {
+                embedMsg.setDescription('message sent');
+                message.channel.send(embedMsg);
+            }).catch((err) => {
+                embedMsg
+                    .setDescription('could not send message. are your DM\'s blocked?')
+                    .setColor('#ff0000');
+                message.channel.send(embedMsg);
+                break;
+            });
+        }
+        return;
     }
 
     console.log("message amount: " + messageAmount);
