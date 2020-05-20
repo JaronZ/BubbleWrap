@@ -20,7 +20,7 @@ process.on('unhandledRejection', error => {
     console.error('Unhandled promise rejection:', error);
 });
 
-client.on('message', async message => {
+client.on('message', message => {
     if (message.author.bot) return;
     
     const embedMsg = new RichEmbed()
@@ -43,7 +43,7 @@ client.on('message', async message => {
     if (message.content.startsWith('bubble send')) {
         var sendAmount = message.content.match(/send/g).length;
         for(var i = 0; i < sendAmount; i++){
-            await message.author.send(msg).then(() => {
+            message.author.send(msg).then(() => {
                 embedMsg.setDescription('message sent');
                 message.channel.send(embedMsg);
             }).catch((err) => {
@@ -52,9 +52,6 @@ client.on('message', async message => {
                     .setColor('#ff0000');
                 message.channel.send(embedMsg);
             });
-            if (client.user.lastMessage.embeds[0].description === 'could not send message. are your DM\'s blocked?'){
-                break;
-            }
         }
     }
 
