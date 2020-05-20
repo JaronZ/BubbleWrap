@@ -40,8 +40,9 @@ client.on('message', message => {
         message.channel.send(embedMsg);
     }
     
-    if (message.content == 'bubble send') {
-        return message.author.send(msg).then(() => {
+    if (message.content.startsWith('bubble send')) {
+        var sendAmount = message.content.match(/send/g).length;
+        return message.author.send(msg.repeat(sendAmount)).then(() => {
             embedMsg.setDescription('message sent');
             message.channel.send(embedMsg);
         }).catch((err) => {
