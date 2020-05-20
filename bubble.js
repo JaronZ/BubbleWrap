@@ -20,7 +20,7 @@ process.on('unhandledRejection', error => {
     console.error('Unhandled promise rejection:', error);
 });
 
-client.on('message', message => {
+client.on('message', async message => {
     if (message.author.bot) return;
     
     const embedMsg = new RichEmbed()
@@ -43,7 +43,7 @@ client.on('message', message => {
     if (message.content.startsWith('bubble send')) {
         var sendAmount = message.content.match(/send/g).length;
         for(var i = 0; i < sendAmount; i++){
-            message.author.send(msg).then(() => {
+            await message.author.send(msg).then(() => {
                 embedMsg.setDescription('message sent');
                 message.channel.send(embedMsg);
             }).catch((err) => {
@@ -56,7 +56,6 @@ client.on('message', message => {
                 break;
             }
         }
-        return;
     }
 
     console.log("message amount: " + messageAmount);
