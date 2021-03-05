@@ -1,6 +1,7 @@
+const fs = require("fs");
 const { Client, RichEmbed } = require('discord.js');
 const client = new Client();
-const { token } = require('./config.json');
+const token = fs.existsSync("./config.json") ? require("./config.json").token : process.env.BOT_TOKEN;
 var messageAmount = 0;
 var goal = 200;
 var msg = "||pop||".repeat(40);
