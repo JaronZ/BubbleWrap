@@ -1,7 +1,9 @@
 const fs = require("fs");
-const { Client, RichEmbed } = require('discord.js');
+const { Client, TextChannel, MessageEmbed } = require('discord.js');
 const client = new Client();
-const token = fs.existsSync("./config.json") ? require("./config.json").token : process.env.BOT_TOKEN;
+const config = fs.existsSync("./config.json") ? require("./config.json") : null;
+const token = config ? config.token : process.env.BOT_TOKEN;
+const serversChannelId = config ? config.channels.servers : process.env.SERVERS_CHANNEL;
 var messageAmount = 0;
 var goal = 200;
 var msg = "||pop||".repeat(40);
@@ -19,6 +21,22 @@ client.on('error', error => {
 
 process.on('unhandledRejection', error => {
     console.error('Unhandled promise rejection:', error);
+});
+
+client.on("guildCreate", guild => {
+    const serversChannel = client.channels.get(serversChannelId);
+    if(!serversChannel || !(serversChannel instanceof TextChannel)) return;
+    serversChannel.send(new MessageEmbed()
+        .setColor("00FF00")
+        .setDescription(`${client.user.username} has been added to ${guild.name}`));
+});
+
+client.on("guildDelete", guild => {
+    const serversChannel = client.channels.get(serversChannelId);
+    if(!serversChannel || !(serversChannel instanceof TextChannel)) return;
+    serversChannel.send(new MessageEmbed()
+        .setColor("FF0000")
+        .setDescription(`${client.user.username} has been removed from ${guild.name}`));
 });
 
 client.on('message', message => {
