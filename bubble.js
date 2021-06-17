@@ -42,7 +42,7 @@ client.on("guildDelete", guild => {
 client.on('message', message => {
     if (message.author.bot) return;
     
-    const embedMsg = new RichEmbed()
+    const embedMsg = new MessageEmbed()
             .setColor('#0000ff')
             .setAuthor(message.author.username, message.author.displayAvatarURL)
             .setThumbnail(message.author.displayAvatarURL)
