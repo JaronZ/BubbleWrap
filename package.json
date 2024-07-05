@@ -2,9 +2,10 @@
   "name": "bubblewrap",
   "version": "1.0.0",
   "description": "sends bubble wrap after some messages",
-  "main": "bubble.js",
+  "main": "discord/index.js",
   "scripts": {
-    "start": "node bubble.js"
+    "start:discord": "node discord/index.js",
+    "start:guilded": "node guilded/index.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,9 @@
   },
   "homepage": "https://github.com/jaronetje/BubbleWrap#readme",
   "dependencies": {
-    "discord.js": "^12.5.1"
+    "discord-api-types": "^0.37.92",
+    "discord.js": "^14.15.3",
+    "dotenv": "^16.4.5",
+    "guilded.js": "^0.25.0"
   }
 }
